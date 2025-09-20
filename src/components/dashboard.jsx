@@ -16,8 +16,7 @@ const Dashboard = () => {
     }
 
     try {
-      const data = originalUrl?.toLowerCase();
-      const urlshort = await createUrl(data);
+      const urlshort = await createUrl(originalUrl.trim());
       const finalShortUrl = `${
         import.meta.env.VITE_FRONTEND_DOMAIN
       }/${urlshort}`;
@@ -34,7 +33,6 @@ const Dashboard = () => {
     e.preventDefault();
     navigator.clipboard.writeText(back.trim());
     setIsCopied(true);
-  s
     setTimeout(() => setIsCopied(false), 3000);
   };
 
@@ -114,7 +112,7 @@ const Dashboard = () => {
             <div className="flex justify-center mt-6">
               <button
                 onClick={() => {
-                  setShortUrl(false);
+                  setShortUrl("");
                 }}
                 className="flex items-center justify-center px-2 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 disabled:bg-blue-400 disabled:cursor-not-allowed"
               >
